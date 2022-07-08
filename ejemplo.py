@@ -17,6 +17,7 @@ def color(r, g, b): #Función que crea el color.
     #3 bytes
     return bytes([b, g, r])
 
+#Colorea un punto de la imagen.
 BLACK = color(0, 0, 0)
 WHITE = color(255, 255, 255)
 
