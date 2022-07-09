@@ -84,7 +84,7 @@ class Render(object):
                 f.write(self.framebuffer[x][y])
         f.close()
 
-    #Función que dibuja un punto en la pantalla.
+    #Función que dibuja un punto en la pantalla. Esta es una función de bajo nivel. 
     def point(self, x, y): 
         #Esta función dibuja un punto en la pantalla.
         self.framebuffer[x][y] = self.current_color #El color del punto es el color actual.
@@ -96,9 +96,13 @@ r.current_color = color(200, 100, 0) #Cambia el color actual a uno diferente.
 
 for x in range(100, 200):
     for y in range(100, 200):
+        r.current_color = color(
+            80, 
+            50, 
+            44) #Cambia el color actual a uno diferente.
         r.point(x, y) #Dibuja un cuadrado en la pantalla.
 
-r.current_color = color(100, 100, 255) #Cambia el color actual a uno diferente.
+#r.current_color = color(100, 100, 255) #Cambia el color actual a uno diferente.
 
 for x in range(300, 400):
     for y in range(300, 400):
