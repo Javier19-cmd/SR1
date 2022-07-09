@@ -92,6 +92,7 @@ class Render(object):
 
 r = Render(1024, 1024) #Crea un objeto render con un tamaño de 1024x1024.
 
+
 r.current_color = color(200, 100, 0) #Cambia el color actual a uno diferente.
 
 for x in range(100, 200):
