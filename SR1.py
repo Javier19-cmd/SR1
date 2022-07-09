@@ -19,6 +19,7 @@ def glVertex(x, y): #Función que pueda cambiar el color de un punto de la panta
     return ""
 
 def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que funciona glVertex(). Los parámetros deben ser números en el rango de 0 a 1.
+    #Convertir el valor de 0 a 1 de 0 a 255 y luego llamar al color.
     return ""
 
 def glFinish(): #Función que escribe el archivo de imagen resultante.

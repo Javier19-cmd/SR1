@@ -2,6 +2,8 @@ import struct
 
 #Set de utilidades. Estas funciones se pueden hacer en otro archivo para mayor comodidad.
 
+#Se usa el = para convertir de manera correcta.
+
 #Recibe un string y lo convierte en una lista de bytes.
 def char(c):
     #Ocupa 1 byte.
@@ -20,75 +22,87 @@ def dword(d): #Double word.
     return struct.pack("=l", d)
 
 def color(r, g, b): #Función que crea el color.
-    #3 bytes
+    #3 bytes. Retorna el color en bytes.
     return bytes([b, g, r])
 
 #Colorea un punto de la imagen.
 BLACK = color(0, 0, 0)
 WHITE = color(255, 255, 255)
 
+#Render podría ser un archivo aparte. Este archivo importaría las funciones de utilidades y los métodos que ya se crearon en el archivo SR1.py.
 class Render(object):
     #Puede quedar vacío.
     def __init__(self,width, height):
         self.width = width
         self.height = height
-        self.clear() #Llama al método clear. Barre lo anterior que puede estar.
+        self.current_color = WHITE
+        self.clear() #Limpiar la pantalla.
 
     #Método que se usará para dibujar un punto en la pantalla.
     def clear(self):
         #Generador del color.
         self.framebuffer = [
-            [(200, 0, 0) for x in range(self.width)] for y in range(self.height)
+            #Los colores tienen que ir de 0 a 255.
+            [BLACK for x in range(self.width)] 
+            for y in range(self.height)
         ]
     
     def write(self, filename):
+        #Esta no necesita recibir ningún nombre de archivo.
         #Abrir en bw: binary write.
         f = open(filename, "bw")
+        
         #Pixel header.
         f.write(char('B'))
         f.write(char('M'))
-        #Tamaño del archivo en bytes.
+        #Tamaño del archivo en bytes. 
+        # El 3 es para los 3 bytes que seguirán. El 14 es el tamaño del infoheader y el 40 es el tamaño del otro header.
         f.write(dword(14 + 40 + self.width * self.height * 3))
-        f.write(dword(0)) #Algo que no se usará.
-        f.write(dword(14 + 40)) #Offset a la información de la imagen. 14 bytes para el header, 40 para la información de la imagen.
+        f.write(word(0)) #Algo que no se usará. Este es de 2 bytes, por eso se utiliza el word.
+        f.write(word(0)) #Algo que no se usará. Este es de 2 bytes, por eso se utiliza el word.
+        f.write(dword(14 + 40)) #Offset a la información de la imagen. 14 bytes para el header, 40 para la información de la imagen. Aquí empieza la data.
+        #Lo anterior suma 14 bytes.
         
         #Info header.
-        f.write(dword(40)) 
-        f.write(dword(self.width)) #Ancho de la imagen.
-        f.write(dword(self.height)) #Alto de la imagen.
-        
-        f.write(word(1)) #1 color de pixel.
-        f.write(word(24)) #24 bits por pixel.
-        f.write(dword(0)) #Algo que no se usará.
-        
-        #Tamaño de la imagen sin el header.
-        f.write(dword(self.width * self.height * 3)) 
-
+        f.write(dword(40)) #Este es el tamaño del header. Esto es de 4 bytes, por eso se utiliza el dword.
+        f.write(dword(self.width)) #Ancho de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
+        f.write(dword(self.height)) #Alto de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
+        f.write(word(1)) #Número de planos. Esto es de 2 bytes, por eso se utiliza el word.
+        f.write(word(24)) #24 bits por pixel. Esto es porque usa el true color y el RGB.
+        f.write(dword(0)) #Esto es la compresión. Esto es de 4 bytes, por eso se utiliza el dword.
+        f.write(dword(self.width * self.height * 3)) #Tamaño de la imagen sin el header.
         #Pixels que no se usarán mucho.
         f.write(dword(0))
         f.write(dword(0))
         f.write(dword(0))
         f.write(dword(0))
+        #Lo anterior suma 40 bytes.
 
-        #Escribir la imagen como tal.
+        #Pixel data. Arreglar.
         for x in range(self.height):
             for y in range(self.width):
                 f.write(self.framebuffer[x][y])
         f.close()
-    
-    #Hacer un punto.
-    def point(self, x, y, c):
-        self.framebuffer[x][y] = c
-    
-    def set_current_color(self, c): #Cambiar el color actual.
-        self.current_color = c
 
+    #Función que dibuja un punto en la pantalla.
+    def point(self, x, y): 
+        #Esta función dibuja un punto en la pantalla.
+        self.framebuffer[x][y] = self.current_color #El color del punto es el color actual.
+    
 
 r = Render(1024, 1024) #Crea un objeto render con un tamaño de 1024x1024.
 
-r.set_current_color = color(200, 100, 0)
+r.current_color = color(200, 100, 0) #Cambia el color actual a uno diferente.
 
 for x in range(100, 200):
     for y in range(100, 200):
-        r.point(x, y) #Punto rojo.
+        r.point(x, y) #Dibuja un cuadrado en la pantalla.
+
+r.current_color = color(100, 100, 255) #Cambia el color actual a uno diferente.
+
+for x in range(300, 400):
+    for y in range(300, 400):
+        r.point(x, y) #Dibuja un cuadrado en la pantalla.
+
+#r.point(100, 100, WHITE) #Dibuja un punto en la pantalla.
 r.write("a.bmp") #Escribe el archivo.
