@@ -37,5 +37,7 @@ class Render(object):
             f.write(dword(0))
             f.write(dword(0))
             #Lo anterior suma 40 bytes.
+
+            f.close() #Cerrando el archivo que se escribió.
         
         write()
