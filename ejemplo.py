@@ -1,16 +1,22 @@
 import struct
 
-#Recibe un string y lo convierte en una lista de bytes
+#Set de utilidades. Estas funciones se pueden hacer en otro archivo para mayor comodidad.
+
+#Recibe un string y lo convierte en una lista de bytes.
 def char(c):
-    #1 byte
+    #Ocupa 1 byte.
+    #=c es para que sea un caracter. El encode es para convertir el caracter a bits. El =c es para convertir esos bits a bytes.
     return struct.pack("=c", c.encode('ascii'))
 
+#Recibe un número como parámetro.
 def word(w):
-    #2 bytes
+    #Ocupa 2 bytes.
+    #El formato para un word es 'h'. Este gasta 2 bytes, que es lo que se quiere.
     return struct.pack("=h", w)
 
-def dword(d):
-    #4 bytes
+#Recibe un número como parámetro.
+def dword(d): #Double word.
+    #Ocupa 4 bytes. El l es para un num de 4 bytes.
     return struct.pack("=l", d)
 
 def color(r, g, b): #Función que crea el color.
