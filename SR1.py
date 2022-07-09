@@ -24,3 +24,5 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
     return ""
+
+#Importar la clase de Render.

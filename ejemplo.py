@@ -31,7 +31,7 @@ WHITE = color(255, 255, 255)
 
 #Render podría ser un archivo aparte. Este archivo importaría las funciones de utilidades y los métodos que ya se crearon en el archivo SR1.py.
 class Render(object):
-    #Puede quedar vacío.
+    #Puede quedar vacío. El width y el height son los parámetros que se le pasan al constructor; estos pueden existisr hasta el momento en el que se crea el window.
     def __init__(self,width, height):
         self.width = width
         self.height = height
@@ -78,7 +78,7 @@ class Render(object):
         f.write(dword(0))
         #Lo anterior suma 40 bytes.
 
-        #Pixel data. Arreglar.
+        #Pixel data. Arreglar para que solo dibuje una línea.
         for x in range(self.height):
             for y in range(self.width):
                 f.write(self.framebuffer[x][y])
@@ -98,7 +98,7 @@ for x in range(100, 200):
     for y in range(100, 200):
         r.current_color = color(
             80, 
-            50, 
+            50,
             44) #Cambia el color actual a uno diferente.
         r.point(x, y) #Dibuja un cuadrado en la pantalla.
 
@@ -109,4 +109,4 @@ for x in range(300, 400):
         r.point(x, y) #Dibuja un cuadrado en la pantalla.
 
 #r.point(100, 100, WHITE) #Dibuja un punto en la pantalla.
-r.write("a.bmp") #Escribe el archivo.
+r.write("a.bmp") #Escribe el archivo. El nombre del archivo es a.bmp, porque se le pasa una cadena de caracteres.
