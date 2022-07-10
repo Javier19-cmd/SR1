@@ -101,9 +101,9 @@ r.current_color = WHITE #Cambia el color actual a blanco.
 for x in range(100, 200):
     for x in range(100, 200):
         r.current_color = color(
-            80, 
-            50,
-            44) #Cambia el color actual a uno diferente.
+            255, 
+            255,
+            255) #Cambia el color actual a uno diferente.
         r.point(x, x) #Dibuja un cuadrado en la pantalla.
 
 #r.current_color = color(100, 100, 255) #Cambia el color actual a uno diferente.

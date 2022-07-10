@@ -2,11 +2,13 @@ from utilidades import *
 
 #Archivo que inicializará el software de render.
 class Render(object):
-    def __init__(self, width, height):
+    def __init__(self, width, height, frambuffer, color):
         
         #Se inicializan los valores de la ventana.
         self.width = width
         self.height = height
+        self.frambuffer = frambuffer
+        self.color = color
 
         #Método que sirve para poder crear el archivo de imagen.
         def write():
@@ -37,6 +39,10 @@ class Render(object):
             f.write(dword(0))
             f.write(dword(0))
             #Lo anterior suma 40 bytes.
+
+            for x in range(self.height):
+                for y in range(self.width):
+                    print(self.frambuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
         
