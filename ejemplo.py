@@ -93,21 +93,24 @@ class Render(object):
 r = Render(1024, 1024) #Crea un objeto render con un tamaño de 1024x1024.
 
 
-r.current_color = color(200, 100, 0) #Cambia el color actual a uno diferente.
+#r.current_color = color(200, 100, 0) #Cambia el color actual a uno diferente.
 
+r.current_color = WHITE #Cambia el color actual a blanco.
+
+#Esto hace la línea en diagonal.
 for x in range(100, 200):
-    for y in range(100, 200):
+    for x in range(100, 200):
         r.current_color = color(
             80, 
             50,
             44) #Cambia el color actual a uno diferente.
-        r.point(x, y) #Dibuja un cuadrado en la pantalla.
+        r.point(x, x) #Dibuja un cuadrado en la pantalla.
 
 #r.current_color = color(100, 100, 255) #Cambia el color actual a uno diferente.
-
+"""
 for x in range(300, 400):
     for y in range(300, 400):
         r.point(x, y) #Dibuja un cuadrado en la pantalla.
-
-#r.point(100, 100, WHITE) #Dibuja un punto en la pantalla.
+"""
+r.point(100, 100) #Dibuja un punto en la pantalla.
 r.write("a.bmp") #Escribe el archivo. El nombre del archivo es a.bmp, porque se le pasa una cadena de caracteres.
