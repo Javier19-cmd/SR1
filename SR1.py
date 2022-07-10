@@ -1,16 +1,35 @@
+"""
 #Nombre: Javier Valle
 #Carnet: 20159
+
+Referencias: 
+
+1. Instanciar un archivo de Python: https://www.youtube.com/watch?v=rYcluou5gEo&ab_channel=LuisCabreraBenito
+2. Saber si un número es múltiplo de otro: https://www.youtube.com/watch?v=jOCh6ZpkE1k&ab_channel=JohnOrtizOrdoñez
+3. Hacer un return de múltiples variables: https://www.youtube.com/watch?v=QOQTYuynU3w&ab_channel=ProgramaResuelto 
+"""
 
 import Render
 
 def glInt(): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
-    glColor(0, 0.02, 0.01)
+    glColor(0, 0.02, 0.01) #Creando el color de la línea.
 
     #Importar la clase de Render.
-    r = Render.Render()
+    r = Render.Render(ancho, alto)
 
-def glCreateWindow(width, height): #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
-    return ""
+def glCreateWindow(width, height): 
+    #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
+    
+    try: 
+        #Saber si las dimensiones son múltiplos de 4.
+        if width % 4 == 0 and height % 4 == 0:
+            return width, height
+        else:
+            print("Error")
+    except: 
+        print("Ocurrió un error")
+
+ancho, alto = glCreateWindow(1024, 2048) #Se inicializan las dimensiones de la ventana.
 
 def glViewPort(x, y, width, height): #Se usará para definir el área de la imagen sobre la que se va a poder dibujar.
     return ""
