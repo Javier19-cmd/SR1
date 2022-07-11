@@ -12,6 +12,7 @@ Referencias:
 
 import Render
 
+#Pregunar si está bien implementada esta función.
 def glInt(): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
 
     #Importar la clase de Render.
@@ -34,6 +35,7 @@ ancho, alto = glCreateWindow(1024, 1024) #Se inicializan las dimensiones de la v
 def glViewPort(x, y, width, height): #Se usará para definir el área de la imagen sobre la que se va a poder dibujar.
     return ""
 
+#Preguntar si esta función lo que hace es llenar por primera vez el color de la pantalla.
 def glClear(): #Se usará para que llene el mapa de bits con un solo color.
     return ""
 
