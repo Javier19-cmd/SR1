@@ -40,6 +40,11 @@ class Render(object):
             f.write(dword(0))
             #Lo anterior suma 40 bytes.
 
+            #Pintando el archivo de color negro.
+            for x in range(self.height):
+                for y in range(self.width):
+                    f.write(self.frambuffer[x][y])
+
             f.close() #Cerrando el archivo que se escribió.
 
         #Creando punto para debuggear la creación del archivo.   
@@ -47,5 +52,5 @@ class Render(object):
             #Se escribe el pixel en la posición x, y con el color.
             frambuffer[x][y] = color
         
-        point(100, 100, color) #Creando el punto.
+        point(200, 400, color) #Creando el punto.
         write() #Llamando al método que escribirá el archivo.

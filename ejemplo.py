@@ -78,6 +78,7 @@ class Render(object):
         f.write(dword(0))
         #Lo anterior suma 40 bytes.
 
+        
         #Pixel data. Arreglar para que solo dibuje una línea.
         for x in range(self.height):
             for y in range(self.width):

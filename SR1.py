@@ -15,12 +15,12 @@ import Render
 def glInt(): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
 
     #Importar la clase de Render.
-    r = Render.Render(ancho, alto, glClearColor(0, 0, 0), glColor(0, 0.02, 0.01)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
+    r = Render.Render(ancho, alto, glClearColor(0.05, 0.05, 0.05), glColor(0.9, 0.8, 0.87)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
 
-def glCreateWindow(width, height): 
+def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
     
-    try: 
+    try: #Verificar que el tamaño sea un número.
         #Saber si las dimensiones son múltiplos de 4.
         if width % 4 == 0 and height % 4 == 0:
             return width, height
@@ -29,7 +29,7 @@ def glCreateWindow(width, height):
     except: 
         print("Ocurrió un error")
 
-ancho, alto = glCreateWindow(1024, 2048) #Se inicializan las dimensiones de la ventana.
+ancho, alto = glCreateWindow(1024, 1024) #Se inicializan las dimensiones de la ventana.
 
 def glViewPort(x, y, width, height): #Se usará para definir el área de la imagen sobre la que se va a poder dibujar.
     return ""
@@ -67,5 +67,10 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
     return ""
 
+#print(glColor(1,1,1))
+
+#print(glClearColor(1,1,1))
+
+#print(glColor(0.9, 0.8, 0.87))
 
 glInt() #Inicializando el programa.
