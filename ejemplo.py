@@ -113,5 +113,5 @@ for x in range(300, 400):
     for y in range(300, 400):
         r.point(x, y) #Dibuja un cuadrado en la pantalla.
 """
-r.point(100, 100) #Dibuja un punto en la pantalla.
+#r.point(100, 100) #Dibuja un punto en la pantalla.
 r.write("a.bmp") #Escribe el archivo. El nombre del archivo es a.bmp, porque se le pasa una cadena de caracteres.
