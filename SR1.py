@@ -16,7 +16,7 @@ import Render
 def glInt(): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
 
     #Importar la clase de Render.
-    r = Render.Render(ancho, alto, glClearColor(0.05, 0.05, 0.05), glColor(0.9, 0.8, 0.87)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
+    r = Render.Render(ancho, alto, glClearColor(0.82, 0.1, 0.5), glColor(0.003, 1, 0.019)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
 
 def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
