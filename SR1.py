@@ -15,8 +15,10 @@ import Render
 #Pregunar si está bien implementada esta función.
 def glInt(): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
 
+
     #Importar la clase de Render.
     r = Render.Render(ancho, alto, glClearColor(0.82, 0.1, 0.5), glColor(0.003, 1, 0.019)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
+
 
 def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
@@ -27,10 +29,21 @@ def glCreateWindow(width, height): #Preguntar de esta función.
             return width, height
         else:
             print("Error")
-    except: 
-        print("Ocurrió un error")
+    
+    except (TypeError, ZeroDivisionError): #Si en caso es NoneType, entonces se imprime esta excepción.
+        print("Ocurrió un problema con el tamaño de la imagen.")
+    except: #Si en caso se escribió una letra en vez de número, entonces se imprime esta excepción.
+        print("Se ingresó una letra en vez de número.")
 
-ancho, alto = glCreateWindow(1024, 1024) #Se inicializan las dimensiones de la ventana.
+#Variables para crear la ventana.
+dimensiones = [glCreateWindow(1024, 1024)] #Se inicializan las dimensiones de la ventana en una lista.
+dimensiones.sort() #Aplicando sort.
+#Imprimiendo las dimensiones de la imagen.
+#print("Ancho: ", dimensiones[0][0])
+#print("Alto: ", dimensiones[0][1])
+
+ancho = dimensiones[0][0] #Sacando el ancho de la imagen.
+alto = dimensiones[0][1] #Sacando el alto de la imagen.
 
 def glViewPort(x, y, width, height): #Se usará para definir el área de la imagen sobre la que se va a poder dibujar.
     return ""
