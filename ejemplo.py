@@ -118,15 +118,45 @@ for x in range(300, 400):
 
 def line(x0, y0, x1, y1): #Función que dibuja una línea.
     
-    dy = y1 - y0
-    dx = x1 - x0
+    dy = abs(y1 - y0)
+    dx = abs(x1 - x0)
     m = dy / dx
 
+    steep = dy > dx #Si la línea es más ancha que alta.
+
+
+    if steep: #Si la línea es más ancha que alta.
+        x0, y0 = y0, x0
+        x1, y1 = y1, x1
+
+    if x0 > x1: 
+        x0, x1 = x1, x0
+        y0, y1 = y1, y0
+    
+    #Si la línea es más ancha que alta.
+    dy = abs(y1 - y0)
+    dx = abs(x1 - x0)
+    #m = (dy / dx) * dx * 2
+
+    offset = 0 * dx #Offset de la línea.
+    threshold = dx #Umbral de la línea.
+    y = y0 #Y de la línea.
+    
     #Recta: y = y0 + m * (x - x0)
 
     for x in range(x0, x1):
-        y = y0 + m * (x - x0)
-        r.point(round(x), round(y))
+        
+        offset += dy* 2 #Offset de la línea.
+        
+        if offset >= threshold: #Si el offset es mayor o igual al umbral.
+            y += 1 if y0 < y1: #Aumenta el y.
+            threshold +=  dx * 2 #Aumenta el umbral.
+
+        if steep: #Si la línea es más ancha que alta.
+            r.point(y, x)
+        else: #Si la línea es más alta que ancha.
+            r.point(x, y)
+
     
     #i = 0
     #while i <= 1:
@@ -138,6 +168,6 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
 
 #r.point(100, 100) #Dibuja un punto en la pantalla.
 #line(13, 20, 50, 50) #Dibuja una línea en la pantalla.
-line(20, 13, 40, 80) #Dibuja una línea en la pantalla.
-#line(80, 40, 13, 20) #Dibuja una línea en la pantalla.
+#line(20, 13, 40, 80) #Dibuja una línea en la pantalla.
+line(80, 40, 13, 20) #Dibuja una línea en la pantalla.
 r.write("a.bmp") #Escribe el archivo. El nombre del archivo es a.bmp, porque se le pasa una cadena de caracteres.
