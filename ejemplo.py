@@ -118,9 +118,9 @@ for x in range(300, 400):
 
 def line(x0, y0, x1, y1): #Función que dibuja una línea.
     
-    dy = abs(y1 - y0)
-    dx = abs(x1 - x0)
-    m = dy / dx
+    dy = abs(y1 - y0) #Calcula la distancia entre los puntos.
+    dx = abs(x1 - x0) #Calcula la distancia entre los puntos.
+   # m = (dy / dx) * dx
 
     steep = dy > dx #Si la línea es más ancha que alta.
 
@@ -129,7 +129,7 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
         x0, y0 = y0, x0
         x1, y1 = y1, x1
 
-    if x0 > x1: 
+    if x0 > x1: #Si x0 es mayor que x1.
         x0, x1 = x1, x0
         y0, y1 = y1, y0
     
@@ -138,7 +138,7 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
     dx = abs(x1 - x0)
     #m = (dy / dx) * dx * 2
 
-    offset = 0 * dx #Offset de la línea.
+    offset = 0 #Offset de la línea.
     threshold = dx #Umbral de la línea.
     y = y0 #Y de la línea.
     
@@ -146,10 +146,10 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
 
     for x in range(x0, x1):
         
-        offset += dy* 2 #Offset de la línea.
+        offset += dy * 2 #Offset de la línea.
         
         if offset >= threshold: #Si el offset es mayor o igual al umbral.
-            y += 1 if y0 < y1: #Aumenta el y.
+            y += 1 if y0 < y1 else -1 #Decrementa la y.
             threshold +=  dx * 2 #Aumenta el umbral.
 
         if steep: #Si la línea es más ancha que alta.
