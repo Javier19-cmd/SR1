@@ -27,7 +27,9 @@ def glCreateWindow(width, height): #Preguntar de esta función.
         #Saber si las dimensiones son múltiplos de 4.
         if width % 4 == 0 and height % 4 == 0:
             return width, height
-        else:
+        elif width < 0 or height < 0: #Si las dimensiones son negativas, entonces se imprime un error.
+            print("Error")
+        else: 
             print("Error")
     
     except (TypeError, ZeroDivisionError): #Si en caso es NoneType, entonces se imprime esta excepción.
