@@ -134,8 +134,8 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
         y0, y1 = y1, y0
     
     #Si la línea es más ancha que alta.
-    dy = abs(y1 - y0)
-    dx = abs(x1 - x0)
+    dy = y1 - y0
+    dx = x1 - x0
     #m = (dy / dx) * dx * 2
 
     offset = 0 #Offset de la línea.
