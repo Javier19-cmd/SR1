@@ -17,7 +17,7 @@ def glInt(): #Se usará para poder inicializar cualquier objeto interno que requ
 
 
     #Importar la clase de Render.
-    r = Render.Render(ancho, alto, glClearColor(0.82, 0.1, 0.5), glColor(0.003, 1, 0.019)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
+    r = Render.Render(ancho, alto, glClear(), glColor(0.003, 1, 0.019)) #Creando el color de la línea.) #Creando el framebuffer con el color que se le pasa.
 
 
 def glCreateWindow(width, height): #Preguntar de esta función.
@@ -50,7 +50,18 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
 
 #Preguntar si esta función lo que hace es llenar por primera vez el color de la pantalla.
 def glClear(): #Se usará para que llene el mapa de bits con un solo color.
-    return ""
+
+    #Creando lso colores de la imagen.
+    r = 0.016
+    g = 0.203
+    b = 0.898
+
+    if r < 0 or g < 0 or b < 0: #Si los colores son menores a 0, entonces se imprime un error.
+        print("Error")
+    elif r > 1 or g > 1 or b > 1:
+        print("Error")
+    else: #Si todo está bien, entonces se llena el mapa de bits con el color que se le pasa.
+        return glClearColor(r, g, b)
 
 def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el que funciona glClear(). Los parámetros deben ser números en el rango de 0 a 1.
     
@@ -73,7 +84,7 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
     #Convertir el valor de 0 a 1 de 0 a 255 y luego llamar al color.
     if r < 0 or g < 0 or b < 0:
         print("Error")
-    elif r > 255 or g > 255 or b > 255:
+    elif r > 1 or g > 1 or b > 1:
         print("Error")
     else:
         color = bytes([int(b * 255), int(g * 255), int(r * 255)])
