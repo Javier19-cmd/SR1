@@ -126,12 +126,12 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
 
 
     if steep: #Si la línea es más ancha que alta.
-        x0, y0 = y0, x0
-        x1, y1 = y1, x1
+        x0, y0 = y0, x0 #Intercambia los valores de "x0" y "y0". Esto es para que la línea se dibuje correctamente.
+        x1, y1 = y1, x1 #Intercambia los valores de "x0" y "y0". Esto es para que la línea se dibuje correctamente.
 
     if x0 > x1: #Si x0 es mayor que x1.
-        x0, x1 = x1, x0
-        y0, y1 = y1, y0
+        x0, x1 = x1, x0 #Intercambia los valores de "x0" y "x1". Esto es para que la línea se dibuje correctamente.
+        y0, y1 = y1, y0 #Intercambia los valores de "y0" y "y1". Esto es para que la línea se dibuje correctamente.
     
     #Si la línea es más ancha que alta.
     dy = y1 - y0
