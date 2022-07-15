@@ -7,10 +7,6 @@ class Render(object):
         #Se inicializan los valores de la ventana.
         self.width = width
         self.height = height
-        self.widthViewPort = 0
-        self.heightViewPort = 0
-        self.x0 = 0
-        self.y0 = 0
 
         #Método que sirve para poder crear el archivo de imagen.
         def write():
@@ -45,14 +41,14 @@ class Render(object):
             #Pintando el archivo de color negro.
             for x in range(self.height):
                 for y in range(self.width):
-                    f.write(self.frambuffer[x][y])
+                    f.write(self.framebuffer[y][x])
 
             f.close() #Cerrando el archivo que se escribió.
 
         #Creando punto para debuggear la creación del archivo. Preguntar si está bien esta función en esta clase.
         def point(x, y, color):
             #Se escribe el pixel en la posición x, y con el color.
-            self.frambuffer[x][y] = color
+            self.framebuffer[x][y] = color
 
         #point(200, 400, color) #Creando el punto.
         write() #Llamando al método que escribirá el archivo.

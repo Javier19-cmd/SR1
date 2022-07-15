@@ -37,7 +37,7 @@ class Render(object):
         self.height = height
         self.current_color = WHITE
         self.clear() #Limpiar la pantalla.
-
+    
     #Método que se usará para dibujar un punto en la pantalla.
     def clear(self):
         #Generador del color.
@@ -115,7 +115,7 @@ for x in range(300, 400):
     for y in range(300, 400):
         r.point(x, y) #Dibuja un cuadrado en la pantalla.
 """
-
+"""
 def line(x0, y0, x1, y1): #Función que dibuja una línea.
     
     dy = abs(y1 - y0) #Calcula la distancia entre los puntos.
@@ -165,9 +165,10 @@ def line(x0, y0, x1, y1): #Función que dibuja una línea.
      #   r.point(round(x), round(y))
      #   #i += 0.0001 #Número sacado de la manga.
      #   i += 0.1 #Número sacado de la manga.
+"""
 
-#r.point(100, 100) #Dibuja un punto en la pantalla.
+r.point(10, 10) #Dibuja un punto en la pantalla.
 #line(13, 20, 50, 50) #Dibuja una línea en la pantalla.
 #line(20, 13, 40, 80) #Dibuja una línea en la pantalla.
-line(80, 40, 13, 20) #Dibuja una línea en la pantalla.
+#line(80, 40, 13, 20) #Dibuja una línea en la pantalla.
 r.write("a.bmp") #Escribe el archivo. El nombre del archivo es a.bmp, porque se le pasa una cadena de caracteres.

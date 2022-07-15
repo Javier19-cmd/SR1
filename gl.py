@@ -12,6 +12,12 @@ Referencias:
 
 import Render
 
+#Variables globales.
+ancho = 0
+alto = 0
+equis = 0
+ye = 0
+
 #Pregunar si está bien implementada esta función.
 def glInit(): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
 
@@ -22,14 +28,13 @@ def glInit(): #Se usará para poder inicializar cualquier objeto interno que req
 def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
     
-    #Aquí se crea el Render.
-    Render.width = width
-    Render.height = height
+    print(type(width))
+    print(type(height))
 
     try: #Verificar que el tamaño sea un número.
         #Saber si las dimensiones son múltiplos de 4.
         if width % 4 == 0 and height % 4 == 0:
-            return width, height
+            Render.Render(width, height)
         elif width < 0 or height < 0: #Si las dimensiones son negativas, entonces se imprime un error.
             print("Error")
         else: 
@@ -37,13 +42,8 @@ def glCreateWindow(width, height): #Preguntar de esta función.
     
     except (TypeError, ZeroDivisionError): #Si en caso es NoneType, entonces se imprime esta excepción.
         print("Ocurrió un problema con el tamaño de la imagen.")
-    except: #Si en caso se escribió una letra en vez de número, entonces se imprime esta excepción.
-        print("Se ingresó una letra en vez de número.")
-
-ancho = [] #Lista para el ancho de la pantalla.
-alto = [] #Lista para el alto de la pantalla.
-equis = [] #Posición en x.
-ye = [] #Posición en y.
+    #except: #Si en caso se escribió una letra en vez de número, entonces se imprime esta excepción.
+     #   print("Se ingresó una letra en vez de número.")
 
 def glViewPort(x, y, width, height): #Se usará para definir el área de la imagen sobre la que se va a poder dibujar.
     
@@ -70,7 +70,7 @@ def glClear(): #Se usará para que llene el mapa de bits con un solo color.
     #Creando los colores de la pantalla.
     r = 0.1
     g = 0.5
-    b = 0.8   
+    b = 0.8
 
     if r < 0 or g < 0 or b < 0: #Si los colores son menores a 0, entonces se imprime un error.
         print("Error")
@@ -87,6 +87,7 @@ def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el
     elif r > 255 or g > 255 or b > 255: #Verificando que los códigos de los colores no sean mayores a 255.
         print("Error")
     else: #Si todo está bien, entonces se crea el framebuffer con el color que se le pasa.
+
         framebuffer = [
             [glColor(r, g, b) for x in range(ancho)]
             for y in range(alto)
