@@ -15,6 +15,6 @@ def main():
     glVertex(0, 0) #Definiendo el punto inicial de la línea.
     glFinish() #Finalizando la ventana.
 
-    print(alto, ancho)
+    #print(alto, ancho)
 
 main()

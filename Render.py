@@ -9,7 +9,6 @@ class Render(object):
         self.height = height
         self.widthViewPort = 0
         self.heightViewPort = 0
-        self.framebuffer = []
         self.x0 = 0
         self.y0 = 0
 
@@ -50,7 +49,6 @@ class Render(object):
 
             f.close() #Cerrando el archivo que se escribió.
 
-            
         #Creando punto para debuggear la creación del archivo. Preguntar si está bien esta función en esta clase.
         def point(x, y, color):
             #Se escribe el pixel en la posición x, y con el color.

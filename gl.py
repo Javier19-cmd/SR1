@@ -23,7 +23,8 @@ def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
     
     #Aquí se crea el Render.
-    r = Render.Render(width, height)
+    Render.width = width
+    Render.height = height
 
     try: #Verificar que el tamaño sea un número.
         #Saber si las dimensiones son múltiplos de 4.
@@ -54,7 +55,6 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
 
 
     return ancho, alto, equis, ye
-
 
 #Variables para crear la ventana.
 #dimensiones = [glViewPort(1, 2, 100, 200)] #Se inicializan las dimensiones de la ventana en una lista.
