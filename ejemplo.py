@@ -38,12 +38,12 @@ class Render(object):
         self.current_color = WHITE
         self.clear() #Limpiar la pantalla.
     
-    #Método que se usará para dibujar un punto en la pantalla.
+    #Método que se usará para llenar de bits la pantalla.
     def clear(self):
         #Generador del color.
         self.framebuffer = [
             #Los colores tienen que ir de 0 a 255.
-            [BLACK for x in range(self.width)] 
+            [BLACK for x in range(self.width)]
             for y in range(self.height)
         ]
     
@@ -88,7 +88,7 @@ class Render(object):
     #Función que dibuja un punto en la pantalla. Esta es una función de bajo nivel. 
     def point(self, x, y): 
         #Esta función dibuja un punto en la pantalla.
-        self.framebuffer[x][y] = self.current_color #El color del punto es el color actual.
+        self.framebuffer[y][x] = self.current_color #El color del punto es el color actual.
     
 
 r = Render(100, 100) #Crea un objeto render con un tamaño de 1024x1024.

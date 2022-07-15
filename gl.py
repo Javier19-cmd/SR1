@@ -80,6 +80,8 @@ def glClear(): #Se usará para que llene el mapa de bits con un solo color.
         return glClearColor(r, g, b)
 
 def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el que funciona glClear(). Los parámetros deben ser números en el rango de 0 a 1.
+
+    global Render #Se usa para poder acceder a la variable global render.
     
     #Verificando que los códigos de los colores no sean negativos.
     if r < 0 or g < 0 or b < 0:

@@ -2,6 +2,9 @@ from utilidades import *
 
 #Archivo que inicializará el software de render.
 class Render(object):
+
+    framebuffer = []
+
     def __init__(self, width, height):
         
         #Se inicializan los valores de la ventana.
@@ -41,7 +44,7 @@ class Render(object):
             #Pintando el archivo de color negro.
             for x in range(self.height):
                 for y in range(self.width):
-                    f.write(self.framebuffer[y][x])
+                    f.write(self.framebuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
 
