@@ -49,6 +49,8 @@ class Render(object):
                     f.write(self.frambuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
+
+            
         #Creando punto para debuggear la creación del archivo. Preguntar si está bien esta función en esta clase.
         def point(x, y, color):
             #Se escribe el pixel en la posición x, y con el color.

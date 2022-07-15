@@ -23,6 +23,7 @@ def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
     
     #Aquí se crea el Render.
+    r = Render.Render(width, height)
 
     try: #Verificar que el tamaño sea un número.
         #Saber si las dimensiones son múltiplos de 4.
@@ -64,7 +65,12 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
 #alto = dimensiones[0][3] #Sacando el alto de la imagen.
 
 #Preguntar si esta función lo que hace es llenar por primera vez el color de la pantalla.
-def glClear(r, g, b): #Se usará para que llene el mapa de bits con un solo color.
+def glClear(): #Se usará para que llene el mapa de bits con un solo color.
+
+    #Creando los colores de la pantalla.
+    r = 0.1
+    g = 0.5
+    b = 0.8   
 
     if r < 0 or g < 0 or b < 0: #Si los colores son menores a 0, entonces se imprime un error.
         print("Error")
