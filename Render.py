@@ -2,13 +2,16 @@ from utilidades import *
 
 #Archivo que inicializará el software de render.
 class Render(object):
-    def __init__(self, width, height, frambuffer, color):
+    def __init__(self, width, height):
         
         #Se inicializan los valores de la ventana.
         self.width = width
         self.height = height
-        self.frambuffer = frambuffer
-        self.color = color
+        self.widthViewPort = 0
+        self.heightViewPort = 0
+        self.framebuffer = []
+        self.x0 = 0
+        self.y0 = 0
 
         #Método que sirve para poder crear el archivo de imagen.
         def write():
@@ -46,11 +49,10 @@ class Render(object):
                     f.write(self.frambuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
-
         #Creando punto para debuggear la creación del archivo. Preguntar si está bien esta función en esta clase.
         def point(x, y, color):
             #Se escribe el pixel en la posición x, y con el color.
-            frambuffer[x][y] = color
-        
-        point(200, 400, color) #Creando el punto.
+            self.frambuffer[x][y] = color
+
+        #point(200, 400, color) #Creando el punto.
         write() #Llamando al método que escribirá el archivo.
