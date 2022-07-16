@@ -13,7 +13,7 @@ def main():
     #glViewPort(0, 0, ancho, alto) #Definiendo el área de la imagen sobre la que se va a poder dibujar.
     #glColor(0.5, 0.5, 0.5) #Definiendo el color de la línea.
     #glVertex(0, 0) #Definiendo el punto inicial de la línea.
-    #glFinish() #Finalizando la ventana.
+    glFinish() #Finalizando la ventana.
 
     #print(alto, ancho)
 

@@ -1,5 +1,4 @@
 from utilidades import *
-from gl import *
 
 class Render(object):
 
@@ -9,8 +8,8 @@ class Render(object):
         self.Width = width #Ancho de la ventana.
         self.Height = height #Alto de la ventana.
         self.framebuffer = [] #Mapa de bits.
-        print(self.framebuffer)
-    
+        #print(self.framebuffer)
+
 
         #Método que sirve para poder crear el archivo de imagen.
         def write():
@@ -43,9 +42,9 @@ class Render(object):
             #Lo anterior suma 40 bytes.
 
             #Pintando el archivo de color negro.
-            #for x in range(self.Height):
-            #    for y in range(self.Width):
-            #        f.write(self.framebuffer[x][y])
+            #  for x in range(self.Height):
+            #      for y in range(self.Width):
+            #          f.write(self.framebuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
 
@@ -55,4 +54,4 @@ class Render(object):
             self.framebuffer[x][y] = color
 
         #point(200, 400, color) #Creando el punto.
-        write() #Llamando al método que escribirá el archivo.
+        #write() #Llamando al método que escribirá el archivo.
