@@ -8,23 +8,8 @@ class Render(object):
         #Se inicializan los valores de la ventana.
         self.Width = width #Ancho de la ventana.
         self.Height = height #Alto de la ventana.
-        self.equis = 0 #Posición en x del punto que se quiere hacer.
-        self.ye = 0 #Posición en y del punto que se quiere hacer.
-        self.fondo()
-
-    #Método que será instanciado en gl para poder llenar el mapa de bits.
-    def fondo(self):
-        
-        r = 0.1 #Se crea un color de fondo.
-        g = 0.5 #Se crea un color de fondo.
-        b = 0.8 #Se crea un color de fondo.
-
-        FONDO = color(r, g, b) #Se crea el color de la pantalla.
-
-        self.framebuffer = [
-            [FONDO for x in range(self.Width)]
-            for y in range(self.Height)
-        ]
+        self.framebuffer = [] #Mapa de bits.
+    
 
         #Método que sirve para poder crear el archivo de imagen.
         def write():
@@ -57,9 +42,9 @@ class Render(object):
             #Lo anterior suma 40 bytes.
 
             #Pintando el archivo de color negro.
-            for x in range(self.Height):
-                for y in range(self.Width):
-                    f.write(self.framebuffer[x][y])
+            #for x in range(self.Height):
+            #    for y in range(self.Width):
+            #        f.write(self.framebuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
 
@@ -69,4 +54,4 @@ class Render(object):
             self.framebuffer[x][y] = color
 
         #point(200, 400, color) #Creando el punto.
-        write() #Llamando al método que escribirá el archivo.
+        #write() #Llamando al método que escribirá el archivo.

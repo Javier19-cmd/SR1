@@ -30,11 +30,15 @@ def glInit(): #Se usará para poder inicializar cualquier objeto interno que req
 
 def glCreateWindow(width, height): #Preguntar de esta función.
     #Se usará para inicializar el framebuffer con un tamaño (la imagen resultante va a ser de este tamaño)
-
+    global ancho, alto #Variables globales, que servirán para definir el tamaño de la imagen resultante.
 
     try: #Verificar que el tamaño sea un número.
         #Saber si las dimensiones son múltiplos de 4.
         if width % 4 == 0 and height % 4 == 0:
+            
+            ancho = width
+            alto = height
+
             Render(width, height)
         elif width < 0 or height < 0: #Si las dimensiones son negativas, entonces se imprime un error.
             print("Error")
@@ -67,8 +71,8 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
 
 #Preguntar si esta función lo que hace es llenar por primera vez el color de la pantalla.
 def glClear(): #Se usará para que llene el mapa de bits con un solo color.
-    global Render #Se usa para poder acceder a la variable global render.
-
+    #global Render #Se usa para poder acceder a la variable global render.
+    
     #Creando los colores de la pantalla.
     r = 0.1
     g = 0.5
@@ -79,7 +83,16 @@ def glClear(): #Se usará para que llene el mapa de bits con un solo color.
     elif r > 1 or g > 1 or b > 1:
         print("Error")
     else: #Si todo está bien, entonces se llena el mapa de bits con el color que se le pasa.
-        Render.fondo()
+        #Enviar el mapa de bits a la clase Render.
+
+       Render.framebuffer = [
+            [glColor(r, g, b) for x in range(ancho)]
+            for y in range(alto)
+        ]
+
+    print(ancho)
+    print(alto)
+    print(Render.framebuffer)
 
 def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el que funciona glClear(). Los parámetros deben ser números en el rango de 0 a 1.
 
@@ -93,8 +106,8 @@ def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el
     else: #Si todo está bien, entonces se crea el framebuffer con el color que se le pasa.
 
         Render.framebuffer = [
-            [glColor(r, g, b) for x in range(ancho)]
-            for y in range(alto)
+            [glColor(r, g, b) for x in range(Render.Width)]
+            for y in range(Render.Height)
         ]
 
 def glVertex(x, y): #Función que pueda cambiar el color de un punto de la pantalla. Las coordenadas x, y son relativas al viewport que definieron con glViewPort. glVertex(0, 0) cambia el color del punto en el centro del viewport, glVertex(1, 1) en la esquina superior derecha. glVertex(-1, -1) la esquina inferior izquierda
@@ -111,7 +124,9 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
         print(Color)        
 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
-    pass
+    global Render
+    
+    Render.write()
 
 #print(glColor(1,1,1))
 
