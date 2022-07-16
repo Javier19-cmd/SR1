@@ -28,4 +28,4 @@ def dword(d): #Double word.
     
 def color(r, g, b): #Función que crea el color.
     #3 bytes. Retorna el color en bytes.
-    return bytes([b, g, r])
+    return bytes([int(b * 255), int(g * 255), int(r * 255)])

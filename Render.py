@@ -1,15 +1,30 @@
 from utilidades import *
 
-#Archivo que inicializará el software de render.
-class Render(object):
 
-    framebuffer = []
+class Render(object):
 
     def __init__(self, width, height):
         
         #Se inicializan los valores de la ventana.
-        self.width = width
-        self.height = height
+        self.Width = width #Ancho de la ventana.
+        self.Height = height #Alto de la ventana.
+        self.equis = 0 #Posición en x del punto que se quiere hacer.
+        self.ye = 0 #Posición en y del punto que se quiere hacer.
+        self.fondo()
+
+    #Método que será instanciado en gl para poder llenar el mapa de bits.
+    def fondo(self):
+        
+        r = 0.1 #Se crea un color de fondo.
+        g = 0.5 #Se crea un color de fondo.
+        b = 0.8 #Se crea un color de fondo.
+
+        FONDO = color(r, g, b) #Se crea el color de la pantalla.
+
+        self.framebuffer = [
+            [FONDO for x in range(self.Width)]
+            for y in range(self.Height)
+        ]
 
         #Método que sirve para poder crear el archivo de imagen.
         def write():
@@ -21,19 +36,19 @@ class Render(object):
             f.write(char('B'))
             f.write(char('M'))
             #Escribiendo el tamaño del archivo en bytes.
-            f.write(dword(14 + 40 + self.width * self.height * 3))
+            f.write(dword(14 + 40 + self.Width * self.Height * 3))
             f.write(dword(0)) #Cosa que no se utilizará en este caso.
             f.write(dword(14 + 40)) #Offset a la información de la imagen. 14 bytes para el header, 40 para la información de la imagen. Aquí empieza la data.
             #Lo anterior suma 14 bytes.
 
             #Información del header.
             f.write(dword(40)) #Este es el tamaño del header. Esto es de 4 bytes, por eso se utiliza el dword.
-            f.write(dword(width)) #Ancho de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
-            f.write(dword(height)) #Alto de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
+            f.write(dword(self.Width)) #Ancho de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
+            f.write(dword(self.Height)) #Alto de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
             f.write(word(1)) #Número de planos. Esto es de 2 bytes, por eso se utiliza el word.
             f.write(word(24)) #24 bits por pixel. Esto es porque usa el true color y el RGB.
             f.write(dword(0)) #Esto es la compresión. Esto es de 4 bytes, por eso se utiliza el dword.
-            f.write(dword(width * height * 3)) #Tamaño de la imagen sin el header.
+            f.write(dword(self.Width * self.Height * 3)) #Tamaño de la imagen sin el header.
             #Pixels que no se usarán mucho.
             f.write(dword(0))
             f.write(dword(0))
@@ -42,8 +57,8 @@ class Render(object):
             #Lo anterior suma 40 bytes.
 
             #Pintando el archivo de color negro.
-            for x in range(self.height):
-                for y in range(self.width):
+            for x in range(self.Height):
+                for y in range(self.Width):
                     f.write(self.framebuffer[x][y])
 
             f.close() #Cerrando el archivo que se escribió.
