@@ -1,5 +1,5 @@
 from utilidades import *
-
+from gl import *
 
 class Render(object):
 
@@ -9,6 +9,7 @@ class Render(object):
         self.Width = width #Ancho de la ventana.
         self.Height = height #Alto de la ventana.
         self.framebuffer = [] #Mapa de bits.
+        print(self.framebuffer)
     
 
         #Método que sirve para poder crear el archivo de imagen.
@@ -54,4 +55,4 @@ class Render(object):
             self.framebuffer[x][y] = color
 
         #point(200, 400, color) #Creando el punto.
-        #write() #Llamando al método que escribirá el archivo.
+        write() #Llamando al método que escribirá el archivo.
