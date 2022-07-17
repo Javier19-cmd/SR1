@@ -12,7 +12,7 @@ colorP = 0
 framebuffer = []
 
 #Este método recibe el color del framebuffer.
-def recibirColor(color):
+def recibirColorFondo(color):
     global colorP
 
     #Llenando el framebuffer.
