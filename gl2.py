@@ -17,8 +17,6 @@ from utilidades import *
 #Variables globales.
 anchoV = 0 #Ancho de la ventana.
 altoV = 0 #Alto de la ventana.
-equis = 0
-ye = 0
 
 
 #Color de la pantalla.
@@ -26,6 +24,10 @@ rP = 0
 gP = 0
 bP = 0
 fondo = 0
+
+#Otras variables globales.
+equis = 0
+ye = 0
 
 #Render = None #Instanciando la clase de Render.
 
@@ -148,6 +150,7 @@ def glFinish(): #Función que escribe el archivo de imagen resultante.
    # Rend.write()
 
    Rend2.Render2()
+   Rend2.punto(50, 50)
 
 #print(glColor(1,1,1))
 
