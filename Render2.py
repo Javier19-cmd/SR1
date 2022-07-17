@@ -1,43 +1,34 @@
 from utilidades import *
 
-#Variables globales del archivo.
-ancho, alto = 0, 0 
-framebuffer = []
+#Variables globales.
+
+#Ancho y alto de la pantalla.
+anchoP, altoP, colorP = 0, 0, 0
+
+def recibirColor(color):
+    global colorP #Variable global que se utiliza para modificar el color de la pantalla.
+    colorP = color #Modificando la variable global del color.
+    
+    #print(colorP)
 
 
-#Método para poder escribir el framebuffer del archivo de imagen.
-def FrameBuffer(r, g, b):
-    global framebuffer #Variable global para modificar el framebuffer del archivo.
+#Método que renderiza el archivo.
+def Render2(width, height):
+    global anchoP, altoP
 
-    #Llenando de bits el framebuffer.
-    Framebuffer = [
-        [color(r, g, b) for x in range(ancho)]
-        for y in range(alto)
-    ]
+    #Llenando las variables globales.
+    anchoP = width
+    altoP = height
+    #print(colorP)
 
-    #Reemplazar los valores del framebuffer.
-    framebuffer = Framebuffer
-
-#Creando punto para debuggear la creación del archivo. Preguntar si está bien esta función en esta clase.
-def point(x, y, color):
-    #Se escribe el pixel en la posición x, y con el color.
-    framebuffer[x][y] = color
-
-def Render(Width, Height):
-    global ancho, alto #Variables globales del archivo que se modificarán.
-
-    #Llenando las variables globaloes.
-    ancho = Width
-    alto = Height
-
-    print(framebuffer)
-
+    #local = framebuffer #Variable local para modificar el framebuffer del archivo.
+    
     #Método que sirve para poder crear el archivo de imagen.
     def write():
 
         #Se abre el archivo con la forma de bw.
-        f = open("SR1.bmp", "bw")
-        print(framebuffer)
+        f = open("prueba.bmp", "bw")
+        #print(framebuffer)
 
         #Se escribe el encabezado del archivo.
 
@@ -45,19 +36,19 @@ def Render(Width, Height):
         f.write(char('B'))
         f.write(char('M'))
         #Escribiendo el tamaño del archivo en bytes.
-        f.write(dword(14 + 40 + Width * Height * 3))
+        f.write(dword(14 + 40 + width * height * 3))
         f.write(dword(0)) #Cosa que no se utilizará en este caso.
         f.write(dword(14 + 40)) #Offset a la información de la imagen. 14 bytes para el header, 40 para la información de la imagen. Aquí empieza la data.
         #Lo anterior suma 14 bytes.
 
         #Información del header.
         f.write(dword(40)) #Este es el tamaño del header. Esto es de 4 bytes, por eso se utiliza el dword.
-        f.write(dword(Width)) #Ancho de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
-        f.write(dword(Height)) #Alto de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
+        f.write(dword(width)) #Ancho de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
+        f.write(dword(height)) #Alto de la imagen. Esto es de 4 bytes, por eso se utiliza el dword.
         f.write(word(1)) #Número de planos. Esto es de 2 bytes, por eso se utiliza el word.
         f.write(word(24)) #24 bits por pixel. Esto es porque usa el true color y el RGB.
         f.write(dword(0)) #Esto es la compresión. Esto es de 4 bytes, por eso se utiliza el dword.
-        f.write(dword(Width * Height * 3)) #Tamaño de la imagen sin el header.
+        f.write(dword(width * height * 3)) #Tamaño de la imagen sin el header.
         #Pixels que no se usarán mucho.
         f.write(dword(0))
         f.write(dword(0))
@@ -65,9 +56,13 @@ def Render(Width, Height):
         f.write(dword(0))
         #Lo anterior suma 40 bytes.
 
-        # #Pintando el archivo de color negro.
-        # for x in range(Height):
-        #     for y in range(Width):
+        print("Ancho y alto en write: ", anchoP, altoP, colorP)
+        #print("Framebuffer en write: ", framebuffer)
+
+        #Se escribe la data de la imagen.
+        # for x in range(height):
+        #     for y in range(width):
+        #         #print(framebuffer)
         #         f.write(framebuffer[x][y])
 
 

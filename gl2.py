@@ -11,7 +11,7 @@ Referencias:
 5. Acceder a una variable de otra clase: https://programmerclick.com/article/14131486210/
 """
 
-import Render as Rend #Importando la clase Render.
+import Render2 as Rend2 #Importando la clase Render.
 from utilidades import *
 
 #Variables globales.
@@ -47,7 +47,7 @@ def glCreateWindow(width, height): #Preguntar de esta función.
             anchoV = width 
             altoV = height
 
-            Rend.Render(anchoV, altoV) #Creando la ventana.
+            Rend2.Render2(anchoV, altoV) #Creando la ventana.
 
         elif width < 0 or height < 0: #Si las dimensiones son negativas, entonces se imprime un error.
             print("Error")
@@ -80,14 +80,16 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
 #Preguntar si esta función lo que hace es llenar por primera vez el color de la pantalla.
 def glClear(): #Se usará para que llene el mapa de bits con un solo color.
 
-    print(rP, gP, bP) #Imprimiendo el color que se le pasa.
+    print("Colores en glClear ", color(rP, gP, bP)) #Imprimiendo el color que se le pasa.
     
     if rP < 0 or gP < 0 or bP < 0: #Si los colores son menores a 0, entonces se imprime un error.
         print("Error")
     elif rP > 1 or gP > 1 or bP > 1:
         print("Error")
     else: #Si todo está bien, entonces se llena el mapa de bits con el color que se le pasa.
-        Rend.FrameBuffer(rP, gP, bP) #Llenando el mapa de bits con un color.
+        print(color(rP, gP, bP))
+        #Rend2.recibirColor(color(rP, gP, bP))
+        #Rend2.Render2(anchoV, altoV)
 
     #Debugging.
     #print(anchoV)
@@ -111,10 +113,10 @@ def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el
         rP = r
         gP = g
         bP = b
-        
-        color(rP, gP, bP) #Color inicial de la pantalla.
 
-        #print(color(rP, gP, bP)) #Debuggeo.
+        #color(rP, gP, bP) #Color inicial de la pantalla.
+
+        print("Color en glClearColor: ", color(rP, gP, bP)) #Debuggeo.
 
 def glVertex(x, y): #Función que pueda cambiar el color de un punto de la pantalla. Las coordenadas x, y son relativas al viewport que definieron con glViewPort. glVertex(0, 0) cambia el color del punto en el centro del viewport, glVertex(1, 1) en la esquina superior derecha. glVertex(-1, -1) la esquina inferior izquierda
     return ""
@@ -130,8 +132,9 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
         return Color        
 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
-    print(altoV, anchoV)
-
+    #print(altoV, anchoV)
+    #Rend2.write()
+    pass
     #Llamar al método write en la clase Render.
    # Rend.write()
 
