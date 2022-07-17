@@ -48,7 +48,7 @@ def glCreateWindow(width, height): #Preguntar de esta función.
             anchoV = width 
             altoV = height
 
-            Rend2.Render2(anchoV, altoV) #Creando la ventana.
+            Rend2.DimensionesPantalla(anchoV, altoV) #Creando la ventana.
 
         elif width < 0 or height < 0: #Si las dimensiones son negativas, entonces se imprime un error.
             print("Error")
@@ -94,9 +94,8 @@ def glClear(): #Se usará para que llene el mapa de bits con un solo color.
     
     fondo = color(rP, gP, bP) #Creando el color de la línea.
 
-    Rend2.recibirColor(fondo) #Recibiendo el color de la línea.
-    Rend2.otro()
-    Rend2.o()
+    Rend2.recibirColor(fondo) #Recibiendo el color del fondo.
+    Rend2.Framebuffer() #Llenando el framebuffer de la pantalla.
 
     #Debugging.
     #print(anchoV)
@@ -143,15 +142,15 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
     #print(altoV, anchoV)
     #Rend2.write()
-    pass
+    #pass
     #print(rP, gP, bP)
     #Llamar al método write en la clase Render.
    # Rend.write()
+   
+   Rend2.Render2()
 
 #print(glColor(1,1,1))
 
 #print(glClearColor(1,1,1))
 
 #print(glColor(0.9, 0.8, 0.87))
-
-glInit() #Inicializando el programa.

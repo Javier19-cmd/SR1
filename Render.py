@@ -37,7 +37,6 @@ def Render(Width, Height):
 
         #Se abre el archivo con la forma de bw.
         f = open("SR1.bmp", "bw")
-        print(framebuffer)
 
         #Se escribe el encabezado del archivo.
 
