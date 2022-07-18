@@ -29,6 +29,9 @@ fondo = 0
 equis = 0
 ye = 0
 
+#Variable global para la función glColor.
+Color = 0
+
 #Render = None #Instanciando la clase de Render.
 
 #Pregunar si está bien implementada esta función.
@@ -131,14 +134,16 @@ def glVertex(x, y): #Función que pueda cambiar el color de un punto de la panta
     return ""
 
 def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que funciona glVertex(). Los parámetros deben ser números en el rango de 0 a 1.
+    
+    global Color #Se usa para poder acceder a las variables globales.
+    
     #Convertir el valor de 0 a 1 de 0 a 255 y luego llamar al color.
     if r < 0 or g < 0 or b < 0:
         print("Error")
     elif r > 1 or g > 1 or b > 1:
         print("Error")
     else:
-        Color = color(r, g, b) #Se manda a hacer el color con las utilidades.
-        return Color        
+        Color = color(r, g, b) #Se manda a hacer el color con las utilidades y se setea el color.       
 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
     #print(altoV, anchoV)
