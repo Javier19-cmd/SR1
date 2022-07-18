@@ -12,7 +12,7 @@ colorP = 0
 equis, ye = 0, 0
 
 #Prueba del punto.
-colorA = color(1, 1, 1)
+colorA = color(0.5, 0.5, 0.5)
 print("Color del punto", colorA)
 
 #Framebuffer de la pantalla.
@@ -105,7 +105,7 @@ def write():
                 f.write(framebuffer[y][x])
             
         #Aquí encima se escribe el cuadrado para meter el punto.
-        punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.
+        #punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.
 
 
         f.close() #Cerrando el archivo que se escribió.

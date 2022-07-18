@@ -81,9 +81,8 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
 #alto = dimensiones[0][3] #Sacando el alto de la imagen.
 
 #Preguntar si esta función lo que hace es llenar por primera vez el color de la pantalla.
-def glClear(): #Se usará para que llene el mapa de bits con un solo color.
-    
-    global fondo
+def glClear(): #Se usará para que llene el mapa de bits con un solo color.   
+    global fondo #Variable global para el color del fondo de pantalla.
 
     #print("Colores en glClear ", color(rP, gP, bP)) #Imprimiendo el color que se le pasa.
     
@@ -149,7 +148,7 @@ def glFinish(): #Función que escribe el archivo de imagen resultante.
     #Llamar al método write en la clase Render.
    # Rend.write()
 
-   Rend2.punto(15, 15) #Probando el método punto.
+   Rend2.punto(25, 25) #Probando el método punto.
    Rend2.write() #Escribiendo el archivo.
 
 #print(glColor(1,1,1))
