@@ -168,7 +168,7 @@ def write():
         # framebuffer[Posx][Posy] = lista #El color del punto es el color actual.
         # print("Framebuffer con el viewport cargado", framebuffer)
         #Aquí encima se escribe el cuadrado para meter el punto.
-        View(Posx, Posy, Ancho, Alto)
+        #View(Posx, Posy, Ancho, Alto)
         #punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.
 
 

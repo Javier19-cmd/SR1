@@ -12,7 +12,7 @@ alto = 600
 
 #Posición del viewport.
 posx = 215
-posy = 300
+posy = 215
 
 glViewPort(posx, posy, ancho, alto) #Definiendo el área de la imagen sobre la que se va a poder dibujar.
 #glColor(0.5, 0.5, 0.5) #Definiendo el color del punto.
