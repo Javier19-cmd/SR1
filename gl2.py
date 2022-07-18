@@ -149,8 +149,8 @@ def glFinish(): #Función que escribe el archivo de imagen resultante.
     #Llamar al método write en la clase Render.
    # Rend.write()
 
-   Rend2.Render2()
-   Rend2.punto(50, 50)
+   Rend2.punto(15, 15) #Probando el método punto.
+   Rend2.write() #Escribiendo el archivo.
 
 #print(glColor(1,1,1))
 

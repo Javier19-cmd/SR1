@@ -8,6 +8,10 @@ anchoP, altoP = 0, 0
 #Color del framebuffer.
 colorP = 0
 
+#Posiciones de los puntos.
+equis, ye = 0, 0
+
+#Prueba del punto.
 colorA = color(1, 1, 1)
 print("Color del punto", colorA)
 
@@ -16,7 +20,8 @@ framebuffer = []
 
 #Este método recibe el color del framebuffer.
 def recibirColorFondo(color):
-    global colorP
+    #En este método se setea el color del framebuffer.
+    global colorP #Instanciando la variable global del color de la pantalla.
 
     #Llenando el framebuffer.
     colorP = color
@@ -24,7 +29,8 @@ def recibirColorFondo(color):
 
 #Método que renderiza el archivo.
 def DimensionesPantalla(width, height):
-    global anchoP, altoP
+    #En este método se setea el ancho y alto de la pantalla.
+    global anchoP, altoP #Instanciando las variables globales del ancho y alto de la pantalla.
 
     #Llenando las variables globales.
     anchoP = width
@@ -32,10 +38,13 @@ def DimensionesPantalla(width, height):
 
 #Método que escribe el framebuffer.
 def Framebuffer():
-    print(colorP)
-
-    print(colorP)
+    #En este método se escribe el framebuffer.
     global framebuffer
+
+    #print(colorP)
+
+    #print(colorP)
+
 
     #Llenando de bits el framebuffer.
     framebuffer = [
@@ -43,14 +52,23 @@ def Framebuffer():
         for y in range(altoP)
     ]
 
+#Método que dibuja un punto.
 def punto(x, y):
+    #En este método se dibuja un punto en la pantalla.
+    global equis, ye #Instanciando las variables globales de las posiciones del punto.
+
+    #Llenando las variables globales.
+    equis = x
+    ye = y
+
     #Esta función dibuja un punto en la pantalla.
     #print(framebuffer[x][y])
+
     framebuffer[y][x] = colorA #El color del punto es el color actual.
 
 
 #Método que escribe el archivo bmp.
-def Render2():
+def write():
         
         #Se abre el archivo con la forma de bw.
         f = open("prueba.bmp", "bw")
@@ -86,8 +104,8 @@ def Render2():
             for y in range(anchoP):
                 f.write(framebuffer[y][x])
             
-            #Aquí encima se escribe el cuadrado.
-            punto(50, 50) #Aquí se tiene que escribir el punto del archivo.
+        #Aquí encima se escribe el cuadrado para meter el punto.
+        punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.
 
 
         f.close() #Cerrando el archivo que se escribió.
