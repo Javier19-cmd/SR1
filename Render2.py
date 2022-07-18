@@ -104,9 +104,9 @@ def View(posX, posY, ancho, alto):
     #print("Lista en el viewport", lista)
 
     #Hacer una copia del viewport en el framebuffer con los índices iguales.
-    for i in range(Alto):
-        for j in range(Ancho):
-            framebuffer[Posy + i][Posx + j] = lista[i][j]
+    for i in range(Ancho):
+        for j in range(Alto):
+            framebuffer[Posx + i][Posy + j] = lista[i][j]
     
     #print(framebuffer)
 
