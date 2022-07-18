@@ -27,6 +27,9 @@ Posx, Posy = 0, 0
 #Ancho y alto del viewport.
 Ancho, Alto = 0, 0
 
+#Lista temporal para el viewport.
+
+lista = []
 
 #Framebuffer de la pantalla.
 framebuffer = []
@@ -82,7 +85,7 @@ def punto(x, y):
 #Método que hace el viewport del archivo.
 def View(posX, posY, ancho, alto):
     #En este método se hace el viewport del archivo.
-    global Posx, Posy, Ancho, Alto #Instanciando las variables globales del viewport.
+    global Posx, Posy, Ancho, Alto, lista #Instanciando las variables globales del viewport.
 
     #Llenando las variables globales.
     Posx = posX
@@ -92,12 +95,29 @@ def View(posX, posY, ancho, alto):
 
     #print(Posx, Posy)
 
+    #Probando la lista.
+    lista = [
+            [colorV for x in range(Ancho)]
+            for y in range(Alto)
+        ]
+
+    #print("Lista en el viewport", lista)
+
+    #Hacer una copia del viewport en el framebuffer con los índices iguales.
+    for i in range(Alto):
+        for j in range(Ancho):
+            framebuffer[Posy + i][Posx + j] = lista[i][j]
+    
+    #print(framebuffer)
+
     #Hacer un cuadrado en el framebuffer.
-    for x in range(Posx, Ancho):
-        for y in range(Posy, Alto):
-            #print(Posx, Posy)
-            #print(framebuffer[x][y])
-            framebuffer[x][y] = colorV
+    # for x in range(Ancho):
+    #     for y in range(Alto):
+    #         #print(Posx, Posy)
+    #         #print(framebuffer[x][y])
+    #         framebuffer[x][y] = colorV
+
+    #print("sss")
 
     #framebuffer[Posx][Posy] = colorV #El color del viewport es el color actual.
 
@@ -133,12 +153,20 @@ def write():
         f.write(dword(0))
         #Lo anterior suma 40 bytes.
 
+        #print("Framebuffer", framebuffer)
+
+        #print(framebuffer[Posx][Posy])
+
         #Pintando el archivo de color negro.
         for x in range(altoP):
             for y in range(anchoP):
                 f.write(framebuffer[y][x])
 
-            
+        #print(framebuffer)
+        #print("Lista temporal en write", lista)
+    
+        # framebuffer[Posx][Posy] = lista #El color del punto es el color actual.
+        # print("Framebuffer con el viewport cargado", framebuffer)
         #Aquí encima se escribe el cuadrado para meter el punto.
         View(Posx, Posy, Ancho, Alto)
         #punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.

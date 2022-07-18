@@ -74,7 +74,6 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
     ye = y
 
     Rend2.View(equis, ye, ancho, alto) #Creando el viewport.
-
 #Variables para crear la ventana.
 #dimensiones = [glViewPort(1, 2, 100, 200)] #Se inicializan las dimensiones de la ventana en una lista.
 #Imprimiendo las dimensiones de la imagen.
@@ -143,7 +142,7 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
     elif r > 1 or g > 1 or b > 1:
         print("Error")
     else:
-        Color = color(r, g, b) #Se manda a hacer el color con las utilidades y se setea el color.       
+        Color = color(r, g, b) #Se manda a hacer el color con las utilidades y se setea el color.
 
 def glFinish(): #Función que escribe el archivo de imagen resultante.
     #print(altoV, anchoV)
