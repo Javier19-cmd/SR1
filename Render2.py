@@ -9,6 +9,7 @@ anchoP, altoP = 0, 0
 colorP = 0
 
 colorA = color(1, 1, 1)
+print("Color del punto", colorA)
 
 #Framebuffer de la pantalla.
 framebuffer = []
@@ -44,7 +45,9 @@ def Framebuffer():
 
 def punto(x, y):
     #Esta función dibuja un punto en la pantalla.
+    #print(framebuffer[x][y])
     framebuffer[y][x] = colorA #El color del punto es el color actual.
+
 
 #Método que escribe el archivo bmp.
 def Render2():
@@ -82,5 +85,9 @@ def Render2():
         for x in range(altoP):
             for y in range(anchoP):
                 f.write(framebuffer[y][x])
+            
+            #Aquí encima se escribe el cuadrado.
+            punto(50, 50) #Aquí se tiene que escribir el punto del archivo.
+
 
         f.close() #Cerrando el archivo que se escribió.
