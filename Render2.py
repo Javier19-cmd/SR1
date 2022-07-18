@@ -12,14 +12,14 @@ colorP = 0
 equis, ye = 0, 0
 
 #Prueba del punto.
-colorA = color(0.5, 0.5, 0.5)
-print("Color del punto", colorA)
+colorA = 0
+#print("Color del punto", colorA)
 
 #Propiedades del viewport.
 
 #Color del viewport.
-colorV = color(0.7, 0.08, 0.02)
-print("Color del viewport", colorV)
+colorV = 0
+#print("Color del viewport", colorV)
 
 #Posición en x, y del viewport.
 Posx, Posy = 0, 0
@@ -68,6 +68,15 @@ def Framebuffer():
         for y in range(altoP)
     ]
 
+#Seteando el color del punto.
+def colorPunto(color):
+    #En este método se setea el color del punto.
+    global colorV #Instanciando la variable global del color del punto.
+
+    #Llenando la variable global.
+    colorA = color
+    print("Color del punto", colorA)
+
 #Método que dibuja un punto.
 def punto(x, y):
     #En este método se dibuja un punto en la pantalla.
@@ -81,6 +90,14 @@ def punto(x, y):
     #print(framebuffer[x][y])
 
     framebuffer[y][x] = colorA #El color del punto es el color actual.
+
+def colorViewPort(color):
+    #En este método se setea el color del viewport.
+    global colorV #Instanciando la variable global del color del viewport.
+
+    #Llenando la variable global.
+    colorV = color
+    print("Color del viewport", colorV)
 
 #Método que hace el viewport del archivo.
 def View(posX, posY, ancho, alto):

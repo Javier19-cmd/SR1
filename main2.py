@@ -15,6 +15,6 @@ posx = 215
 posy = 215
 
 glViewPort(posx, posy, ancho, alto) #Definiendo el área de la imagen sobre la que se va a poder dibujar.
-#glColor(0.5, 0.5, 0.5) #Definiendo el color del punto.
+glColor(0.5, 0.5, 0.5) #Definiendo el color del punto.
 #glVertex(0, 0) #Definiendo el punto inicial del punto.
 glFinish() #Escribiendo la ventana.

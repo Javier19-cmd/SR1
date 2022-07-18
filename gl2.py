@@ -73,6 +73,10 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
     equis = x
     ye = y
 
+    colorV = color(0.4, 0.08, 0.02) #Creando el color del viewport.
+
+    Rend2.colorViewPort(colorV) #Recibiendo el color del viewport.
+
     Rend2.View(equis, ye, ancho, alto) #Creando el viewport.
 #Variables para crear la ventana.
 #dimensiones = [glViewPort(1, 2, 100, 200)] #Se inicializan las dimensiones de la ventana en una lista.
@@ -143,7 +147,8 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
         print("Error")
     else:
         Color = color(r, g, b) #Se manda a hacer el color con las utilidades y se setea el color.
-
+        Rend2.colorPunto(Color)
+        #print("El color del punto es: ", Color)
 def glFinish(): #Función que escribe el archivo de imagen resultante.
     #print(altoV, anchoV)
     #Rend2.write()
