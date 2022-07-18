@@ -70,7 +70,7 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
     equis = x
     ye = y
 
-    return ancho, alto, equis, ye
+    Rend2.View(ancho, alto, equis, ye) #Creando el viewport.
 
 #Variables para crear la ventana.
 #dimensiones = [glViewPort(1, 2, 100, 200)] #Se inicializan las dimensiones de la ventana en una lista.
@@ -148,7 +148,7 @@ def glFinish(): #Función que escribe el archivo de imagen resultante.
     #Llamar al método write en la clase Render.
    # Rend.write()
 
-   Rend2.punto(25, 25) #Probando el método punto.
+   #Rend2.punto(25, 25) #Probando el método punto.
    Rend2.write() #Escribiendo el archivo.
 
 #print(glColor(1,1,1))

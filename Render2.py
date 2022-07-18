@@ -15,6 +15,19 @@ equis, ye = 0, 0
 colorA = color(0.5, 0.5, 0.5)
 print("Color del punto", colorA)
 
+#Propiedades del viewport.
+
+#Color del viewport.
+colorV = color(0.7, 0.08, 0.02)
+print("Color del viewport", colorV)
+
+#Posición en x, y del viewport.
+Posx, Posy = 0, 0
+
+#Ancho y alto del viewport.
+Ancho, Alto = 0, 0
+
+
 #Framebuffer de la pantalla.
 framebuffer = []
 
@@ -66,6 +79,23 @@ def punto(x, y):
 
     framebuffer[y][x] = colorA #El color del punto es el color actual.
 
+#Método que hace el viewport del archivo.
+def View(posX, posY, ancho, alto):
+    #En este método se hace el viewport del archivo.
+    global Posx, Posy, Ancho, Alto #Instanciando las variables globales del viewport.
+
+    #Llenando las variables globales.
+    Posx = posX
+    Posy = posY
+    Ancho = ancho
+    Alto = alto
+
+    #Escribir un cuadrado en el framebuffer, según sus coordenadas y tamaño.
+    for x in range(Posx):
+        for y in range(Posy):
+            framebuffer[x][y] = colorV
+
+    #framebuffer[Posx][Posy] = colorV #El color del viewport es el color actual.
 
 #Método que escribe el archivo bmp.
 def write():
@@ -103,8 +133,10 @@ def write():
         for x in range(altoP):
             for y in range(anchoP):
                 f.write(framebuffer[y][x])
+
             
         #Aquí encima se escribe el cuadrado para meter el punto.
+        View(Posx, Posy, Ancho, Alto)
         #punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.
 
 
