@@ -90,9 +90,13 @@ def View(posX, posY, ancho, alto):
     Ancho = ancho
     Alto = alto
 
-    #Escribir un cuadrado en el framebuffer, según sus coordenadas y tamaño.
-    for x in range(Posx):
-        for y in range(Posy):
+    #print(Posx, Posy)
+
+    #Hacer un cuadrado en el framebuffer.
+    for x in range(Posx, Ancho):
+        for y in range(Posy, Alto):
+            #print(Posx, Posy)
+            #print(framebuffer[x][y])
             framebuffer[x][y] = colorV
 
     #framebuffer[Posx][Posy] = colorV #El color del viewport es el color actual.

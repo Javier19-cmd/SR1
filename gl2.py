@@ -70,7 +70,7 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
     equis = x
     ye = y
 
-    Rend2.View(ancho, alto, equis, ye) #Creando el viewport.
+    Rend2.View(equis, ye, ancho, alto) #Creando el viewport.
 
 #Variables para crear la ventana.
 #dimensiones = [glViewPort(1, 2, 100, 200)] #Se inicializan las dimensiones de la ventana en una lista.
