@@ -1,20 +1,25 @@
 from gl2 import *
 
-glCreateWindow(1024, 1024) #Creando la ventana.
-glClearColor(0, 0, 0) #Llenando el color de la pantalla.
-glClear() #Llenando el mapa de bits con el color que se le pasa.
 
-#Se comentó la instancia que está arriba de f.close() para debuggear el glViewPort().
+def main():
 
-#Ancho y alto de la pantalla en donde se dibujará el punto.
-ancho = 400
-alto = 400
+    glCreateWindow(1024, 1024) #Creando la ventana.
+    glClearColor(0, 0, 0) #Llenando el color de la pantalla.
+    glClear() #Llenando el mapa de bits con el color que se le pasa.
 
-#Posición del viewport.
-posx = 215
-posy = 215
+    #Se comentó la instancia que está arriba de f.close() para debuggear el glViewPort().
 
-glViewPort(posx, posy, ancho, alto) #Definiendo el área de la imagen sobre la que se va a poder dibujar.
-glColor(0.8, 0.2, 0.1) #Definiendo el color del punto.
-glVertex(-1, 1) #Definiendo el punto inicial del punto.
-glFinish() #Escribiendo la ventana.
+    #Ancho y alto de la pantalla en donde se dibujará el punto.
+    ancho = 400
+    alto = 400
+
+    #Posición del viewport.
+    posx = 215
+    posy = 215
+
+    glViewPort(posx, posy, ancho, alto) #Definiendo el área de la imagen sobre la que se va a poder dibujar.
+    glColor(0.8, 0.2, 0.1) #Definiendo el color del punto.
+    glVertex(-1, 1) #Definiendo el punto inicial del punto.
+    glFinish() #Escribiendo la ventana.
+
+main()
