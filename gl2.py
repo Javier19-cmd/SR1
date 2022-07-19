@@ -155,7 +155,9 @@ def glVertex(x, y): #Función que pueda cambiar el color de un punto de la panta
     movx = x0 + int(x * (ancho/2))
     movy = y0 + int(y * (alto/2))
 
-    print("Hola ", movx, movy) #Debugging.
+
+
+    #print("Hola ", movx, movy) #Debugging.
 
     Rend2.Vertex(movx, movy) #Creando el punto.
 
