@@ -8,12 +8,14 @@ anchoP, altoP = 0, 0
 #Color del framebuffer.
 colorP = 0
 
+
 #Posiciones de los puntos.
 equis, ye = 0, 0
 
 #Prueba del punto.
 colorA = 0
 #print("Color del punto", colorA)
+
 
 #Propiedades del viewport.
 
@@ -71,7 +73,7 @@ def Framebuffer():
 #Seteando el color del punto.
 def colorPunto(color):
     #En este método se setea el color del punto.
-    global colorV #Instanciando la variable global del color del punto.
+    global colorA #Instanciando la variable global del color del punto.
 
     #Llenando la variable global.
     colorA = color
@@ -87,7 +89,7 @@ def punto(x, y):
     ye = y
 
     #Esta función dibuja un punto en la pantalla.
-    #print(framebuffer[x][y])
+    #print(framebufobsfer[x][y])
 
     framebuffer[y][x] = colorA #El color del punto es el color actual.
 
@@ -137,6 +139,25 @@ def View(posX, posY, ancho, alto):
     #print("sss")
 
     #framebuffer[Posx][Posy] = colorV #El color del viewport es el color actual.
+
+
+def Vertex(x, y):
+    #En este método se dibuja un punto en el viewport.
+    global equis, ye #Instanciando las variables globales de las posiciones del punto.
+
+    #Llenando las variables globales.
+    equis = x
+    ye = y
+
+    print(equis, ye)
+
+    #Colocar el punto en el viewport.
+    framebuffer[equis][ye] = colorA
+
+
+    print("Coordenadas del punto: ", equis, ye)
+    print("Punto: ", framebuffer[equis][ye])
+
 
 #Método que escribe el archivo bmp.
 def write():

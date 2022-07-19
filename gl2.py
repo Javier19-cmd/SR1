@@ -25,7 +25,7 @@ gP = 0
 bP = 0
 fondo = 0
 
-#Otras variables globales.
+#Ubicaciones del viewport.
 equis = 0
 ye = 0
 
@@ -66,18 +66,25 @@ def glCreateWindow(width, height): #Preguntar de esta función.
      #   print("Se ingresó una letra en vez de número.")
 
 def glViewPort(x, y, width, height): #Se usará para definir el área de la imagen sobre la que se va a poder dibujar.
-    
+    global ancho, alto, equis, ye #Variables globales que se usarán para definir el área de la imagen sobre la que se va a poder dibujar.
+
     #Todas las variables que se reciben se guardan en variables globales.
     ancho = width
     alto = height
     equis = x
     ye = y
 
-    colorV = color(0.4, 0.08, 0.02) #Creando el color del viewport.
+    colorV = color(0.4, 0.8, 0.08) #Creando el color del viewport.
 
     Rend2.colorViewPort(colorV) #Recibiendo el color del viewport.
 
-    Rend2.View(equis, ye, ancho, alto) #Creando el viewport.
+    #Verificando que las dimensiones del viewport sean múltiplos de 4.
+    if ancho % 4 == 0 and alto % 4 == 0:
+        Rend2.View(equis, ye, ancho, alto)
+    else: 
+        print("Error")
+
+    #Rend2.View(equis, ye, ancho, alto) #Creando el viewport.
 #Variables para crear la ventana.
 #dimensiones = [glViewPort(1, 2, 100, 200)] #Se inicializan las dimensiones de la ventana en una lista.
 #Imprimiendo las dimensiones de la imagen.
@@ -134,7 +141,23 @@ def glClearColor(r, g, b): #Función con la que se pueda cambiar el color con el
         #print("Color en glClearColor: ", color(rP, gP, bP)) #Debuggeo.
 
 def glVertex(x, y): #Función que pueda cambiar el color de un punto de la pantalla. Las coordenadas x, y son relativas al viewport que definieron con glViewPort. glVertex(0, 0) cambia el color del punto en el centro del viewport, glVertex(1, 1) en la esquina superior derecha. glVertex(-1, -1) la esquina inferior izquierda
-    return ""
+    #Ubicar un punto en el viewport.
+    global ancho, alto, equis, ye #Variables globales que se usarán para definir el área de la imagen sobre la que se va a poder dibujar el punto.
+
+    #Verifiando las propiedades del viewport.
+    print(ancho, alto, equis, ye)
+    
+    #Obteniendo el centro del viewport.
+    x0 = int(equis + (ancho/2))
+    y0 = int(ye + (alto/2))
+
+    #Moviendo el punto a la posición deseada.
+    movx = x0 + int(x * (ancho/2))
+    movy = y0 + int(y * (alto/2))
+
+    print("Hola ", movx, movy) #Debugging.
+
+    Rend2.Vertex(movx, movy) #Creando el punto.
 
 def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que funciona glVertex(). Los parámetros deben ser números en el rango de 0 a 1.
     
@@ -147,6 +170,7 @@ def glColor(r, g, b): #Función con la que se pueda cambiar el color con el que 
         print("Error")
     else:
         Color = color(r, g, b) #Se manda a hacer el color con las utilidades y se setea el color.
+        print(Color)
         Rend2.colorPunto(Color)
         #print("El color del punto es: ", Color)
 def glFinish(): #Función que escribe el archivo de imagen resultante.
