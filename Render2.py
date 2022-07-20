@@ -163,7 +163,7 @@ def Vertex(x, y):
 def write():
         
         #Se abre el archivo con la forma de bw.
-        f = open("prueba.bmp", "bw")
+        f = open("SR1.bmp", "bw")
 
         #Se escribe el encabezado del archivo.
 
