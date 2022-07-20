@@ -79,7 +79,7 @@ def glViewPort(x, y, width, height): #Se usará para definir el área de la imag
     Rend2.colorViewPort(colorV) #Recibiendo el color del viewport.
 
     #Verificando que las dimensiones del viewport sean múltiplos de 4.
-    if ancho % 4 == 0 and alto % 4 == 0:
+    if ancho % 4 == 1 and alto % 4 == 1:
         Rend2.View(equis, ye, ancho, alto)
     else: 
         print("Error")
@@ -155,7 +155,8 @@ def glVertex(x, y): #Función que pueda cambiar el color de un punto de la panta
     movx = x0 + int(x * (ancho/2))
     movy = y0 + int(y * (alto/2))
 
-
+    #Debuggeo.
+    print("Posiciones del punto trasladado ", movx, movy)
 
     #print("Hola ", movx, movy) #Debugging.
 

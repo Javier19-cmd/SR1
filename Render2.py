@@ -120,7 +120,7 @@ def View(posX, posY, ancho, alto):
             for y in range(Alto)
         ]
 
-    #print("Lista en el viewport", lista)
+    #print("Lista del viewport", lista)
 
     #Hacer una copia del viewport en el framebuffer con los índices iguales.
     for i in range(Ancho):
@@ -149,7 +149,7 @@ def Vertex(x, y):
     equis = x
     ye = y
 
-    print(equis, ye)
+    #print(equis, ye)
 
     #Colocar el punto en el viewport.
     framebuffer[equis][ye] = colorA
