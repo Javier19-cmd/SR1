@@ -155,8 +155,8 @@ def Vertex(x, y):
     framebuffer[equis][ye] = colorA
 
 
-    print("Coordenadas del punto: ", equis, ye)
-    print("Punto: ", framebuffer[equis][ye])
+    print("Coordenadas del punto: ", ye, equis)
+    print("Punto: ", framebuffer[ye][equis])
 
 
 #Método que escribe el archivo bmp.
