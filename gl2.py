@@ -16,8 +16,6 @@ from utilidades import *
 #Render = None #Instanciando la clase de Render.
 
 class Gl(object):
-
-
     #Pregunar si está bien implementada esta función.
     def __init__(self): #Se usará para poder inicializar cualquier objeto interno que requiera el software de render.
 

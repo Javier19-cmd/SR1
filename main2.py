@@ -3,7 +3,7 @@ from gl2 import *
 
 def main():
 
-    g = Gl()
+    g = Gl() #Inicializando la clase Gl con todas las variables vacías.
 
     g.glCreateWindow(1024, 1024) #Creando la ventana.
     g.glClearColor(0, 0, 0) #Llenando el color de la pantalla.
