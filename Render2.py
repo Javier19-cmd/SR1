@@ -200,14 +200,4 @@ def write():
             for y in range(anchoP):
                 f.write(framebuffer[y][x])
 
-        #print(framebuffer)
-        #print("Lista temporal en write", lista)
-    
-        # framebuffer[Posx][Posy] = lista #El color del punto es el color actual.
-        # print("Framebuffer con el viewport cargado", framebuffer)
-        #Aquí encima se escribe el cuadrado para meter el punto.
-        #View(Posx, Posy, Ancho, Alto)
-        #punto(equis, ye) #Aquí se tiene que escribir el punto del archivo.
-
-
         f.close() #Cerrando el archivo que se escribió.
